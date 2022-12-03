@@ -12,51 +12,26 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizapp</title>
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar bg-light">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Quizapp</span>
         </div>
     </nav>
 
-    <div class="content">
+    <div onclick="window.scrollTo(0, document.body.scrollHeight);" class="content">
         <div class="card quiz-card">
             <img src="img/quizapp.jpg" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Question</h5>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div class="question-footer">
-                    <span>
-                        <b>1</b> of <b>5</b> Questions
-                    </span>
-                    <button class="btn btn-primary">Next Question</button>
-                </div>
-            </div>
+            <div class="card-body" id="content"></div>
         </div>
     </div>
 </body>

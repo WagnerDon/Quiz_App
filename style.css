@@ -2,6 +2,8 @@ body {
     background-color: #007AFF;
     display: flex;
     flex-direction: column;
+    user-select: none;
+    scroll-behavior: smooth;
 }
 
 .content {
@@ -12,8 +14,33 @@ body {
     min-height: 100vh;
 }
 
+.unclicker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .quiz-card {
     width: 30rem;
+}
+
+.quiz-answer:hover {
+    cursor: pointer;
+    transition: 125ms;
+    background-color: #007AFF;
+}
+
+.correct {
+    background-color: rgb(15, 255, 80) !important;
+    box-shadow: 0 0 5px 0 rgb(15, 255, 80);
+}
+
+.incorrect {
+    background-color: rgb(255, 49, 49) !important;
+    box-shadow: 0 0 5px 0 rgb(255, 49, 49);
 }
 
 .question-footer {
