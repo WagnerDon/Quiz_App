@@ -58,6 +58,8 @@ let wrong = new Audio('sound/wrong.wav');
 let kahoot = new Audio('sound/kahoot.mp3');
 
 function renderQuestion(number) {
+    kahoot.pause();
+    kahoot.currentTime = 0;
     if (number < questions.length) {
         let content = document.getElementById('content');
         let question = questions[number];
@@ -72,7 +74,6 @@ function renderQuestion(number) {
     else {
         end(content);
     }
-    kahoot.pause();
 }
 
 function HTML(question, number, first, second, third, fourth) {
