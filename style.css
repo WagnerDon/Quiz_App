@@ -1,17 +1,8 @@
 body {
     background-color: #007AFF;
-    display: flex;
-    flex-direction: column;
     user-select: none;
     scroll-behavior: smooth;
-}
-
-.content {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .unclicker {
