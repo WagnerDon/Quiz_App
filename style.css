@@ -82,7 +82,6 @@ body {
 @media (max-width: 500px) {
     .quiz-card {
         width: 80vw;
-        margin: 10px;
     }
 
     .btn {
