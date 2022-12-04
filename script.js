@@ -72,6 +72,7 @@ function renderQuestion(number) {
     else {
         end(content);
     }
+    kahoot.pause();
 }
 
 function HTML(question, number, first, second, third, fourth) {
