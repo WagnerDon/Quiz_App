@@ -40,7 +40,7 @@ let questions = [
         "correct": 1
     },
     {
-        "question": "Where does counting start, in JavaScript",
+        "question": "Where does the count start, in JavaScript",
         "first": "2",
         "second": "1",
         "third": "3",
@@ -67,7 +67,7 @@ function renderQuestion(number) {
         let fourth = question["fourth"];
         content.innerHTML = "";
         content.innerHTML += HTML(question, number, first, second, third, fourth);
-        checkProgress();
+        checkProgress(number);
     }
     else {
         end(content);
@@ -76,9 +76,11 @@ function renderQuestion(number) {
 
 function HTML(question, number, first, second, third, fourth) {
     return `
-    <div class="card quiz-card">
-        <img id="img" src="img/quizapp.jpg" class="card-img-top">
-        <div class="card-body">
+    <div class="card quiz-card transparent">
+        <div class="p-4 d-flex justify-content-center align-items-center rounded-top bg-light">
+            <img id="img" src="img/bulb.png" class="card-img-top bulb">
+        </div>
+        <div class="card-body bg-light rounded-bottom">
             <div class="progress">
                 <div id="progressbar" style="width: 0%" class="progress-bar" role="progressbar"></div>
             </div>
@@ -118,17 +120,36 @@ function HTML(question, number, first, second, third, fourth) {
 
 function endHTML() {
     return `
-    
+    <div class="card quiz-card transparent">
+        <div class="bg-light card-img-top d-flex justify-content-center align-items-center p-4 min-height rounded-top">
+            <div class="d-flex justify-content-center align-items-center size effect rounded">
+                <img id="img" src="img/confetti.png" class="confetti">
+            </div>
+        </div>
+        <div class="card-body bg-light rounded-bottom">
+            <h3 class="card-title text-center">Quiz completed!</h3>
+            <div class="question-footer">
+                <span>
+                    <b>${counter}</b> of <b>${questions.length}</b> Questions answered correctly!
+                </span>
+                <button id="button" class="btn btn-primary" onclick="renderQuestion(${0})">Retake the Quiz</button>
+            </div>
+        </div>
+    </div>
     `;
 }
 
-function checkProgress() {
+function checkProgress(number) {
     document.getElementById('progressbar').style.width = `${progress}%`;
+    if (number === questions.length - 1) {
+        document.getElementById('button').innerHTML = "Finish";
+    }
 }
 
 function end(content) {
     content.innerHTML = "";
     content.innerHTML += endHTML();
+    kahoot.play();
     progress = 0;
     counter = 0;
 }
@@ -137,10 +158,12 @@ function answer(key, number) {
     if (key === questions[number]["correct"]) {
         document.getElementById(key).classList.add('correct');
         counter++;
+        right.play();
     }
     else {
         document.getElementById(key).classList.add('incorrect');
         document.getElementById(questions[number]["correct"]).classList.add('correct');
+        wrong.play();
     }
     progress = 100 / questions.length * (number + 1);
     document.getElementById('progressbar').style.width = `${progress}%`;

@@ -1,8 +1,8 @@
 body {
-    background-color: #007AFF;
     user-select: none;
     scroll-behavior: smooth;
     height: 100vh;
+    background: linear-gradient(transparent, #007AFF);
 }
 
 .unclicker {
@@ -26,12 +26,12 @@ body {
 
 .correct {
     background-color: rgb(15, 255, 80) !important;
-    box-shadow: 0 0 50px 0 rgba(15, 255, 80, 50%);
+    box-shadow: 0 0 30px 0 rgba(15, 255, 80, 50%);
 }
 
 .incorrect {
     background-color: rgb(255, 49, 49) !important;
-    box-shadow: 0 0 50px 0 rgba(255, 49, 49, 50%);
+    box-shadow: 0 0 30px 0 rgba(255, 49, 49, 50%);
 }
 
 .question-footer {
@@ -41,9 +41,40 @@ body {
     border-top: 1px solid rgba(0, 0, 0, 0.25);
     padding-top: var(--bs-card-spacer-y);
     margin-top: var(--bs-card-spacer-y);
-    ;
 }
 
 .progress {
     margin-bottom: var(--bs-card-spacer-y);
+}
+
+.progress-bar {
+    box-shadow: 0 0 10px 0 #007AFF;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.confetti {
+    height: 100px;
+    width: 100px;
+}
+
+.bulb {
+    height: 100px;
+    width: 100px;
+}
+
+.size {
+    height: 0;
+    width: 0;
+}
+
+.min-height {
+    min-height: 150px;
+}
+
+.effect {
+    box-shadow: 0px 0px 100px 50px rgb(254 72 115 / 80%);
+    z-index: 1;
 }
