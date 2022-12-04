@@ -58,7 +58,6 @@ let wrong = new Audio('sound/wrong.wav');
 let kahoot = new Audio('sound/kahoot.mp3');
 
 function renderQuestion(number) {
-    kahoot.pause();
     if (number < questions.length) {
         let content = document.getElementById('content');
         let question = questions[number];
@@ -67,61 +66,69 @@ function renderQuestion(number) {
         let third = question["third"];
         let fourth = question["fourth"];
         content.innerHTML = "";
-        content.innerHTML += `
-        <div class="card quiz-card">
-            <img id="img" src="img/quizapp.jpg" class="card-img-top">
-            <div class="card-body">
-                <div class="progress">
-                    <div id="progressbar" style="width: 0%" class="progress-bar" role="progressbar"></div>
-                </div>
-                <h5 class="card-title">${question["question"]}</h5>
-                <div id="questions">
-                    <div id="1" class="card quiz-answer mb-2" onclick="answer(1, ${number})">
-                        <div class="card-body">
-                            ${first}
-                        </div>
-                    </div>
-                    <div id="2" class="card quiz-answer mb-2" onclick="answer(2, ${number})">
-                        <div class="card-body">
-                            ${second}
-                        </div>
-                    </div>
-                     <div id="3" class="card quiz-answer mb-2" onclick="answer(3, ${number})">
-                        <div class="card-body">
-                            ${third}
-                        </div>
-                    </div>
-                    <div id="4" class="card quiz-answer" onclick="answer(4, ${number})">
-                        <div class="card-body">
-                            ${fourth}
-                        </div>
-                    </div>
-                </div>
-                <div class="question-footer">
-                    <span>
-                        <b>${number + 1}</b> of <b>${questions.length}</b> Questions
-                    </span>
-                    <button id="button" disabled class="btn btn-primary" onclick="renderQuestion(${number + 1})">Next Question</button>
-                </div>
-            </div>
-        </div>
-        `;
+        content.innerHTML += HTML(question, number, first, second, third, fourth);
+        checkProgress();
     }
     else {
         end(content);
     }
-    checkProgress();
+}
+
+function HTML(question, number, first, second, third, fourth) {
+    return `
+    <div class="card quiz-card">
+        <img id="img" src="img/quizapp.jpg" class="card-img-top">
+        <div class="card-body">
+            <div class="progress">
+                <div id="progressbar" style="width: 0%" class="progress-bar" role="progressbar"></div>
+            </div>
+            <h5 class="card-title">${question["question"]}</h5>
+            <div id="questions">
+                <div id="1" class="card quiz-answer mb-2" onclick="answer(1, ${number})">
+                    <div class="card-body">
+                        ${first}
+                    </div>
+                </div>
+                <div id="2" class="card quiz-answer mb-2" onclick="answer(2, ${number})">
+                    <div class="card-body">
+                        ${second}
+                    </div>
+                </div>
+                 <div id="3" class="card quiz-answer mb-2" onclick="answer(3, ${number})">
+                    <div class="card-body">
+                        ${third}
+                    </div>
+                </div>
+                <div id="4" class="card quiz-answer" onclick="answer(4, ${number})">
+                    <div class="card-body">
+                        ${fourth}
+                    </div>
+                </div>
+            </div>
+            <div class="question-footer">
+                <span>
+                    <b>${number + 1}</b> of <b>${questions.length}</b> Questions
+                </span>
+                <button id="button" disabled class="btn btn-primary" onclick="renderQuestion(${number + 1})">Next Question</button>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+function endHTML() {
+    return `
+    
+    `;
 }
 
 function checkProgress() {
-    if (document.getElementById('progressbar')) {
-        document.getElementById('progressbar').style.width = `${progress}%`;
-    }
+    document.getElementById('progressbar').style.width = `${progress}%`;
 }
 
 function end(content) {
     content.innerHTML = "";
-    content.innerHTML += ``;
+    content.innerHTML += endHTML();
     progress = 0;
     counter = 0;
 }
