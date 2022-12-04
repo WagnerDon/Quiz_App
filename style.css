@@ -35,12 +35,12 @@ body {
 
 .correct {
     background-color: rgb(15, 255, 80) !important;
-    box-shadow: 0 0 5px 0 rgb(15, 255, 80);
+    box-shadow: 0 0 50px 0 rgba(15, 255, 80, 50%);
 }
 
 .incorrect {
     background-color: rgb(255, 49, 49) !important;
-    box-shadow: 0 0 5px 0 rgb(255, 49, 49);
+    box-shadow: 0 0 50px 0 rgba(255, 49, 49, 50%);
 }
 
 .question-footer {
@@ -51,4 +51,8 @@ body {
     padding-top: var(--bs-card-spacer-y);
     margin-top: var(--bs-card-spacer-y);
     ;
+}
+
+.progress {
+    margin-bottom: var(--bs-card-spacer-y);
 }
